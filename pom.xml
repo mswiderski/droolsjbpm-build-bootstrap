@@ -457,15 +457,6 @@
                            and there is very little chance this will get ever fixed. -->
                       <ignoreClass>org.w3c.dom.ElementTraversal</ignoreClass>
                       <ignoreClass>org.w3c.dom.UserDataHandler</ignoreClass>
-                      <!-- Michaels test -->
-                      <ignoreClass>org/w3c/dom/events/MouseEvent</ignoreClass>
-                      <ignoreClass>org/w3c/dom/events/DocumentEvent</ignoreClass>
-                      <ignoreClass>org/w3c/dom/events/MutationEvent</ignoreClass>
-                      <ignoreClass>org/w3c/dom/events/Event</ignoreClass>
-                      <ignoreClass>org/w3c/dom/events/EventException</ignoreClass>
-                      <ignoreClass>org/w3c/dom/events/EventListener</ignoreClass>
-                      <ignoreClass>org/w3c/dom/events/EventTarget</ignoreClass>
-                      <ignoreClass>org/w3c/dom/events/UIEvent</ignoreClass>
                       <!-- Packaged both in hornetq-commons and hornetq-client. Remove this once we move the testing
                            from HornetQ to ActiveMQ (https://issues.jboss.org/browse/JBPM-5503) -->
                       <ignoreClass>org.hornetq.utils.HornetQUtilBundle_$bundle</ignoreClass>
