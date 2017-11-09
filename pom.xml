@@ -8,7 +8,7 @@
     <groupId>org.jboss.integration-platform</groupId>
     <artifactId>jboss-integration-platform-bom</artifactId>
     <!-- Keep in sync with ip-parent version in kie-user-bom-parent/pom.xml -->
-    <version>7.0.0.Final</version>
+    <version>8.0.0.CR2</version>
   </parent>
 
   <groupId>org.kie</groupId>
@@ -68,11 +68,10 @@
     <!-- ################################################################################ -->
     <version.javaee.api>7.0</version.javaee.api>
     <version.avalon-framework>4.1.4</version.avalon-framework>
-    <version.batik>1.6.1-1</version.batik>
     <version.com.android-dx>1.10</version.com.android-dx>
     <!-- commons cli 1.3.1+ required by Dashbuilder's ElasticSearch module. This override can be removed once IP BOM upgrades as well. -->
     <version.commons-cli>1.3.1</version.commons-cli>
-    <!-- IP BOM 7.0.0.Final defines Jackson 2.5.4
+    <!-- IP BOM 8.0.0.CR2 defines Jackson 2.5.4
          Wildfly 10.0.0.Final includes Jackson 2.5.4
          Wildfly 10.1.0.Final includes Jackson 2.7.4
          JBoss EAP 6.4.16 includes Jackson 2.5.4
@@ -224,7 +223,7 @@
     <jboss.snapshots.repo.url>https://origin-repository.jboss.org/nexus/content/repositories/snapshots/</jboss.snapshots.repo.url>
 
     <!-- Latest release to be used by api-compatibility-check to check backwards compatibility of the Kie API. -->
-    <revapi.oldKieVersion>7.0.0.Final</revapi.oldKieVersion>
+    <revapi.oldKieVersion>8.0.0.CR2</revapi.oldKieVersion>
     <revapi.newKieVersion>${project.version}</revapi.newKieVersion>
 
     <!-- using undertow for kie server router - same version as it comes with WildFly 10.0.0.Final-->
@@ -458,6 +457,15 @@
                            and there is very little chance this will get ever fixed. -->
                       <ignoreClass>org.w3c.dom.ElementTraversal</ignoreClass>
                       <ignoreClass>org.w3c.dom.UserDataHandler</ignoreClass>
+                      <!-- Michaels test -->
+                      <ignoreClass>org/w3c/dom/events/MouseEvent</ignoreClass>
+                      <ignoreClass>org/w3c/dom/events/DocumentEvent</ignoreClass>
+                      <ignoreClass>org/w3c/dom/events/MutationEvent</ignoreClass>
+                      <ignoreClass>org/w3c/dom/events/Event</ignoreClass>
+                      <ignoreClass>org/w3c/dom/events/EventException</ignoreClass>
+                      <ignoreClass>org/w3c/dom/events/EventListener</ignoreClass>
+                      <ignoreClass>org/w3c/dom/events/EventTarget</ignoreClass>
+                      <ignoreClass>org/w3c/dom/events/UIEvent</ignoreClass>
                       <!-- Packaged both in hornetq-commons and hornetq-client. Remove this once we move the testing
                            from HornetQ to ActiveMQ (https://issues.jboss.org/browse/JBPM-5503) -->
                       <ignoreClass>org.hornetq.utils.HornetQUtilBundle_$bundle</ignoreClass>
@@ -1683,7 +1691,7 @@
       </dependency>
 
       <!-- TODO BZ-996210 use org.apache.xmlgraphics:batik* instead -->
-      <dependency>
+      <!-- <dependency>
         <groupId>batik</groupId>
         <artifactId>batik-parser</artifactId>
         <version>${version.batik}</version>
@@ -1744,11 +1752,22 @@
         <groupId>batik</groupId>
         <artifactId>batik-util</artifactId>
         <version>${version.batik}</version>
+      </dependency> -->
+      <dependency>
+        <groupId>org.apache.xmlgraphics</groupId>
+        <artifactId>batik-svg-dom</artifactId>
+        <version>${version.org.apache.xmlgraphics.batik}</version>
+        <exclusions>
+          <exclusion>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+          </exclusion>
+        </exclusions>
       </dependency>
       <dependency>
-        <groupId>batik</groupId>
+        <groupId>org.apache.xmlgraphics</groupId>
         <artifactId>batik-ext</artifactId>
-        <version>${version.batik}</version>
+        <version>${version.org.apache.xmlgraphics.batik}</version>
         <exclusions>
           <exclusion>
             <groupId>xml-apis</groupId>
@@ -1756,7 +1775,7 @@
           </exclusion>
         </exclusions>
       </dependency>
-      <dependency>
+      <!--<dependency>
         <groupId>batik</groupId>
         <artifactId>batik-script</artifactId>
         <version>${version.batik}</version>
@@ -1770,7 +1789,7 @@
         <groupId>batik</groupId>
         <artifactId>batik-awt-util</artifactId>
         <version>${version.batik}</version>
-      </dependency>
+      </dependency> -->
 
       <dependency>
         <groupId>com.android</groupId>
@@ -2420,7 +2439,7 @@
         <artifactId>logging-interceptor</artifactId>
         <version>${version.okhttp}</version>
       </dependency>
-      <!-- httpmime should be moved to jboss-ip-bom/ip-bom/pom.xml > 7.0.0.Final -->
+      <!-- httpmime should be moved to jboss-ip-bom/ip-bom/pom.xml > 8.0.0.CR2 -->
       <dependency>
         <groupId>org.apache.httpcomponents</groupId>
         <artifactId>httpmime</artifactId>
